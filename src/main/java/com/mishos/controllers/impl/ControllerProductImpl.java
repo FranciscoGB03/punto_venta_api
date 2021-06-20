@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mishos.controllers.ControllerProduct;
 import com.mishos.entities.Presentation;
+import com.mishos.entities.Product;
 import com.mishos.entities.Tax;
-import com.mishos.request.RequestFiltersImpuestos;
+import com.mishos.request.RequestFiltersTaxes;
 import com.mishos.request.RequestFiltersPresentation;
+import com.mishos.request.RequestFiltersProducts;
 import com.mishos.services.ServiceProduct;
 
 @RestController
@@ -46,7 +48,7 @@ public class ControllerProductImpl implements ControllerProduct{
 	}
 	
 	@Override
-	public List<Tax> getTaxesByFilters( RequestFiltersImpuestos infoTax){
+	public List<Tax> getTaxesByFilters( RequestFiltersTaxes infoTax){
 		return productService.getTaxesByFilters(infoTax);
 	}
 	
@@ -58,5 +60,26 @@ public class ControllerProductImpl implements ControllerProduct{
 	@Override
 	public List<Tax> saveTaxes( List<Tax> taxes){
 		return productService.saveTaxes(taxes);
+	}
+	
+
+	@Override
+	public List<Product> getProduct(){
+		return productService.getProduct();
+	}
+	
+	@Override
+	public List<Product> getProductsByFilters( RequestFiltersProducts infoProduct){
+		return productService.getProductsByFilters(infoProduct);
+	}
+	
+	@Override
+	public Product saveProduct(Product product) {
+		return productService.saveProduct(product);
+	}
+	
+	@Override
+	public List<Product> saveProducts( List<Product> products){
+		return productService.saveProducts(products);
 	}
 }

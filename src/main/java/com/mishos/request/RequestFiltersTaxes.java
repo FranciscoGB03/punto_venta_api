@@ -1,17 +1,17 @@
 package com.mishos.request;
 
-public class RequestFiltersImpuestos {
+public class RequestFiltersTaxes {
 
 	private String nombre;
 	private String vigencia;
 	private String estatus;
 		
-	public RequestFiltersImpuestos() {
+	public RequestFiltersTaxes() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public RequestFiltersImpuestos(String nombre, String vigencia, String estatus) {
+	public RequestFiltersTaxes(String nombre, String vigencia, String estatus) {
 		super();
 		this.nombre = nombre;
 		this.vigencia = vigencia;

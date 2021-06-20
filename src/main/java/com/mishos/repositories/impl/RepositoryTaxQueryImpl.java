@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mishos.entities.Tax;
 import com.mishos.repositories.RepositoryTaxQuery;
-import com.mishos.request.RequestFiltersImpuestos;
+import com.mishos.request.RequestFiltersTaxes;
 
 @Repository
 public class RepositoryTaxQueryImpl implements RepositoryTaxQuery {
@@ -26,7 +26,7 @@ public class RepositoryTaxQueryImpl implements RepositoryTaxQuery {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public List<Tax> buscaImpuestosPorFiltros(RequestFiltersImpuestos filtros){
+	public List<Tax> buscaImpuestosPorFiltros(RequestFiltersTaxes filtros){
 
 	    CriteriaBuilder qb = em.getCriteriaBuilder(); 
 	    CriteriaQuery cq = qb.createQuery(); 

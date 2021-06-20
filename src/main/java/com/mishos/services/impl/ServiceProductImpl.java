@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mishos.entities.Presentation;
+import com.mishos.entities.Product;
 import com.mishos.entities.Tax;
 import com.mishos.repositories.RepositoryPresentation;
+import com.mishos.repositories.RepositoryProduct;
 import com.mishos.repositories.RepositoryTax;
-import com.mishos.request.RequestFiltersImpuestos;
+import com.mishos.request.RequestFiltersTaxes;
 import com.mishos.request.RequestFiltersPresentation;
+import com.mishos.request.RequestFiltersProducts;
 import com.mishos.services.ServiceProduct;
 
 @Service
@@ -23,6 +26,9 @@ public class ServiceProductImpl implements ServiceProduct {
 	
 	@Autowired
 	RepositoryTax repositoryTax;
+	
+	@Autowired
+	RepositoryProduct repositoryProduct;
 
 	@Override
 	public List<Presentation> getPresentation() {
@@ -64,7 +70,7 @@ public class ServiceProductImpl implements ServiceProduct {
 	}
 
 	@Override
-	public List<Tax> getTaxesByFilters(RequestFiltersImpuestos infoTax) {
+	public List<Tax> getTaxesByFilters(RequestFiltersTaxes infoTax) {
 		List<Tax> taxes = repositoryTax.buscaImpuestosPorFiltros(infoTax);
 		return taxes;
 	}
@@ -87,5 +93,38 @@ public class ServiceProductImpl implements ServiceProduct {
 			
 		}
 		return listTaxes;
+	}
+	
+
+	@Override
+	public List<Product> getProduct(){
+		List<Product> product = repositoryProduct.findAll();
+		return product;		
+	}
+	
+	@Override
+	public List<Product> getProductsByFilters( RequestFiltersProducts infoProduct){
+		List<Product> products = repositoryProduct.buscaProductosPorFiltros(infoProduct);
+		return products;
+	}
+	
+	@Override
+	public Product saveProduct(Product product) {
+		Product newProduct = repositoryProduct.saveAndFlush(product);
+		return newProduct;		
+	}
+	
+	@Override
+	public List<Product> saveProducts( List<Product> products){
+		List<Product> listProducts = new ArrayList<Product>();
+		Iterator<Product> ip = products.iterator();
+		
+		while(ip.hasNext()) {
+			
+			Product nuevo = repositoryProduct.saveAndFlush((Product) ip.next());
+			listProducts.add(nuevo);
+			
+		}
+		return listProducts;
 	}
 }
