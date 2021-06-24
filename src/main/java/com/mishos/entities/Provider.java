@@ -6,10 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cat_proveedor")
-public class Provider  implements Serializable{
+public class Provider implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
-	
+
+    private static final long serialVersionUID = 1L;
+		
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -28,22 +29,12 @@ public class Provider  implements Serializable{
     private String telefonocontacto;
 	@Column(name = "estatus")
     private int estatus;
+	
+	
     
 	public Provider() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	
-	public Provider(BigInteger id, String rfc, String nombre, String razonsocial, String contacto,
-			String emailContacto, String telefonoContacto) {
-		super();
-		this.id = id;
-		this.rfc = rfc;
-		this.nombre = nombre;
-		this.razonsocial = razonsocial;
-		this.contacto = contacto;
-		this.emailcontacto = emailContacto;
-		this.telefonocontacto = telefonoContacto;
 	}
 
 	public BigInteger getId() {
@@ -108,13 +99,6 @@ public class Provider  implements Serializable{
 
 	public void setEstatus(int estatus) {
 		this.estatus = estatus;
-	}
-
-	@Override
-	public String toString() {
-		return "Proveedor [id=" + id + ", rfc=" + rfc + ", nombre=" + nombre + ", razonsocial=" + razonsocial
-				+ ", contacto=" + contacto + ", emailContacto=" + emailcontacto + ", telefonoContacto="
-				+ telefonocontacto + "]";
 	}
     
 }

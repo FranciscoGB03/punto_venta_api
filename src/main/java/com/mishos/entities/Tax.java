@@ -3,12 +3,15 @@ package com.mishos.entities;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -32,6 +35,10 @@ public class Tax{
 	@Column(name = "vigenciaFin")
     private Timestamp vigenciaFin;
 	
+
+    @OneToMany(mappedBy = "impuestos") 
+    private List<StockTax> impuestos = new ArrayList<>();
+		
 	public Tax() {
 		super();
 	}

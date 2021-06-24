@@ -1,5 +1,6 @@
 package com.mishos.entities;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
@@ -16,10 +17,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cat_producto")
-public class Product {
+public class Product implements Serializable{
 
+    private static final long serialVersionUID = 1L;
+    
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
     private BigInteger id;
 	@Column(name = "codigoBarras")
@@ -35,17 +38,17 @@ public class Product {
 	
 
 	@ManyToOne
-	@JoinColumn(name = "presentacion", referencedColumnName="id", foreignKey = @ForeignKey(name = "cat_producto_FK_2"), insertable=true, updatable=false)
+	@JoinColumn(name = "presentacion", referencedColumnName="id", foreignKey = @ForeignKey(name = "cat_producto_FK_2"), insertable=true, updatable=true)
 	private Presentation presentacion;
 	
 
 	@ManyToOne
-	@JoinColumn(name = "subDepartamento", referencedColumnName="id", foreignKey = @ForeignKey(name = "cat_producto_FK_1"), insertable=true, updatable=false)
+	@JoinColumn(name = "subDepartamento", referencedColumnName="id", foreignKey = @ForeignKey(name = "cat_producto_FK_1"), insertable=true, updatable=true)
 	private Subdepartment subDepartamento;
 	
 
 	@ManyToOne
-	@JoinColumn(name = "proveedor", referencedColumnName="id", foreignKey = @ForeignKey(name = "cat_producto_FK"), insertable=true, updatable=false)
+	@JoinColumn(name = "proveedor", referencedColumnName="id", foreignKey = @ForeignKey(name = "cat_producto_FK"), insertable=true, updatable=true)
 	private Provider proveedor;
 	
 	public Product() {
